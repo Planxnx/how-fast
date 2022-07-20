@@ -41,6 +41,7 @@ func BenchmarkSyncPool(b *testing.B) {
 	})
 }
 
+// https://github.com/jolestar/go-commons-pool
 func BenchmarkGoCommonsPool(b *testing.B) {
 	ctx := context.Background()
 
