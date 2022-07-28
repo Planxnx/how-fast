@@ -1,4 +1,4 @@
-# onject-pool
+# object-pool
 
 ```
 BenchmarkNonePool-8        	 4088990	       378.0 ns/op	    1072 B/op	       2 allocs/op
