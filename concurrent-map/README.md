@@ -1,6 +1,9 @@
 # concurrent-map
 
 ```
+goos: darwin
+goarch: arm64
+pkg: github.com/Planxnx/how-fast/concurrent-map
 BenchmarkSyncMap/Write-8   	 						 3543854	       288.1 ns/op	      63 B/op	       3 allocs/op
 BenchmarkSyncMap/Read-8    							99305956	        13.83 ns/op	       0 B/op	       0 allocs/op
 BenchmarkSyncMap/ReadWhileSet-8         	 		 2421800	       420.4 ns/op	     100 B/op	       4 allocs/op
