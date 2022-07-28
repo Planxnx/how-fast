@@ -1,0 +1,20 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/Planxnx/how-fast/concurrent-map
+BenchmarkConcurrentMap/lib=sync_map/method=write-8         	 5147623	       224.7 ns/op	      59 B/op	       3 allocs/op
+BenchmarkConcurrentMap/lib=sync_map/method=read-8          	107642284	        10.09 ns/op	       0 B/op	       0 allocs/op
+BenchmarkConcurrentMap/lib=sync_map/method=read_while_write-8         	 3127586	       356.0 ns/op	      98 B/op	       3 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv1/method=write-8            	14978335	       100.6 ns/op	      60 B/op	       3 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv1/method=read-8             	29258034	        51.18 ns/op	      15 B/op	       1 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv1/method=read_while_write-8 	 6797925	       249.8 ns/op	     120 B/op	       5 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv2/method=write-8            	15091341	        93.49 ns/op	      40 B/op	       2 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv2/method=read-8             	20151265	        55.61 ns/op	      15 B/op	       1 allocs/op
+BenchmarkConcurrentMap/lib=concurrent-mapv2/method=read_while_write-8 	 6827630	       211.4 ns/op	     112 B/op	       4 allocs/op
+BenchmarkConcurrentMap/lib=cmap_non-generic/method=write-8            	19574406	        88.80 ns/op	      64 B/op	       2 allocs/op
+BenchmarkConcurrentMap/lib=cmap_non-generic/method=read-8             	42678046	        37.33 ns/op	       0 B/op	       0 allocs/op
+BenchmarkConcurrentMap/lib=cmap_non-generic/method=read_while_write-8 	 2941575	       453.9 ns/op	      79 B/op	       2 allocs/op
+BenchmarkConcurrentMap/lib=cmap_generic/method=write-8                	23471959	        64.79 ns/op	      55 B/op	       1 allocs/op
+BenchmarkConcurrentMap/lib=cmap_generic/method=read-8                 	27572762	        41.15 ns/op	       8 B/op	       1 allocs/op
+BenchmarkConcurrentMap/lib=cmap_generic/method=read_while_write-8     	 2807271	       389.8 ns/op	      80 B/op	       3 allocs/op
+PASS
+ok  	github.com/Planxnx/how-fast/concurrent-map	27.680s
