@@ -1,0 +1,8 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/Planxnx/how-fast/random
+BenchmarkRandom/lib=math_rand-8         	 7873016	       128.6 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom/lib=crypto_rand-8       	 2415878	       494.5 ns/op	      48 B/op	       3 allocs/op
+BenchmarkRandom/lib=fastrand-8          	604177761	         1.955 ns/op	       0 B/op	       0 allocs/op
+PASS
+ok  	github.com/Planxnx/how-fast/random	4.405s
