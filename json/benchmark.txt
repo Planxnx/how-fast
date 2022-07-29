@@ -1,0 +1,19 @@
+goos: darwin
+goarch: arm64
+pkg: github.com/Planxnx/how-fast/json
+BenchmarkEncoder/lib=encoding_json/size=small-8         	 1810917	       637.7 ns/op	     224 B/op	       2 allocs/op
+BenchmarkEncoder/lib=encoding_json/size=large-8         	     456	   2622021 ns/op	  963929 B/op	    4536 allocs/op
+BenchmarkEncoder/lib=goccy_go-json/size=small-8         	 2955147	       405.1 ns/op	     224 B/op	       2 allocs/op
+BenchmarkEncoder/lib=goccy_go-json/size=large-8         	     679	   1753340 ns/op	  969490 B/op	    4534 allocs/op
+BenchmarkEncoder/lib=jettison/size=small-8              	 3341478	       359.9 ns/op	     176 B/op	       1 allocs/op
+BenchmarkEncoder/lib=jettison/size=large-8              	     866	   1382589 ns/op	  745818 B/op	       1 allocs/op
+BenchmarkEncoder/lib=segmentio_json/size=small-8        	 3782613	       317.3 ns/op	     176 B/op	       1 allocs/op
+BenchmarkEncoder/lib=segmentio_json/size=large-8        	     948	   1270246 ns/op	  745819 B/op	       1 allocs/op
+BenchmarkDecoder/lib=encoding_json/size=small-8         	  693760	      1668 ns/op	     456 B/op	       9 allocs/op
+BenchmarkDecoder/lib=encoding_json/size=large-8         	     164	   7322997 ns/op	 1992895 B/op	   20718 allocs/op
+BenchmarkDecoder/lib=goccy_go-json/size=small-8         	 2738926	       440.1 ns/op	     384 B/op	       4 allocs/op
+BenchmarkDecoder/lib=goccy_go-json/size=large-8         	     576	   2086617 ns/op	 2135743 B/op	   13323 allocs/op
+BenchmarkDecoder/lib=segmentio_json/size=small-8        	 2844964	       417.9 ns/op	     192 B/op	       4 allocs/op
+BenchmarkDecoder/lib=segmentio_json/size=large-8        	     646	   1854388 ns/op	  983974 B/op	   14017 allocs/op
+PASS
+ok  	github.com/Planxnx/how-fast/json	21.683s

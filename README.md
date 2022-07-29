@@ -1,6 +1,6 @@
 # How Fast ?
 
-How fast is each Golang package? And if they were compared, how would it be? (golang lib benchmark comparison)
+How fast is each Golang package? And if they were compared, how would it be? (my research and diary on golang library performance)
 
 ## Test Environment
 
@@ -15,4 +15,18 @@ How fast is each Golang package? And if they were compared, how would it be? (go
 
 ## Concurrent Map
 
-![random](./concurrent-map/benchmark.svg)
+![cmap](./concurrent-map/benchmark.svg)
+
+## JSON Serialization
+
+### Encoder
+
+![encoder_large](./json/benchmark_encoder_large.svg)
+
+![encoder_small](./json/benchmark_encoder_small.svg)
+
+### Decoder
+
+![decoder_large](./json/benchmark_decoder_large.svg)
+
+![decoder_small](./json/benchmark_decoder_small.svg)
