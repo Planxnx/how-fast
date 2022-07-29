@@ -13,12 +13,16 @@ type LibBenchmark struct {
 	Func    func(b *testing.B)
 }
 
+func FieldName(filed, name string) string {
+	return filed + "=" + name
+}
+
 func LibName(lib string) string {
-	return "lib=" + lib
+	return FieldName("lib", lib)
 }
 
 func MethodName(method string) string {
-	return "method=" + method
+	return FieldName("method", method)
 }
 
 func Start(b *testing.B, benchmarks []LibBenchmark) {
