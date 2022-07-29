@@ -1,8 +1,11 @@
 goos: darwin
 goarch: arm64
 pkg: github.com/Planxnx/how-fast/random
-BenchmarkRandom/lib=math_rand-8         	 7873016	       128.6 ns/op	       0 B/op	       0 allocs/op
-BenchmarkRandom/lib=crypto_rand-8       	 2415878	       494.5 ns/op	      48 B/op	       3 allocs/op
-BenchmarkRandom/lib=fastrand-8          	604177761	         1.955 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom/lib=math_rand/method=sync-8         	87709772	        13.65 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom/lib=math_rand/method=async-8        	 9236170	       111.7 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom/lib=crypto_rand/method=sync-8       	 3447411	       356.4 ns/op	      48 B/op	       3 allocs/op
+BenchmarkRandom/lib=crypto_rand/method=async-8      	 2955780	       419.8 ns/op	      48 B/op	       3 allocs/op
+BenchmarkRandom/lib=fastrand/method=sync-8          	100000000	        10.23 ns/op	       0 B/op	       0 allocs/op
+BenchmarkRandom/lib=fastrand/method=async-8         	556434321	         2.357 ns/op	       0 B/op	       0 allocs/op
 PASS
-ok  	github.com/Planxnx/how-fast/random	4.405s
+ok  	github.com/Planxnx/how-fast/random	9.055s
