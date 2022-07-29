@@ -6,7 +6,7 @@ import (
 	"sync"
 	"testing"
 
-	"github.com/Planxnx/how-fast/benchmark"
+	"github.com/Planxnx/how-fast/utils"
 	"github.com/lrita/cmap"
 	conmap "github.com/orcaman/concurrent-map"
 	conmapv2 "github.com/orcaman/concurrent-map/v2"
@@ -22,17 +22,17 @@ func init() {
 }
 
 func BenchmarkConcurrentMap(b *testing.B) {
-	benchmark.Start(b, benchmarks)
+	utils.Start(b, benchmarks)
 }
 
-var benchmarks = []benchmark.LibBenchmark{
+var benchmarks = []utils.LibBenchmark{
 	{
 		Name:    "sync_map",
 		Package: "sync/map",
 		Func: func(b *testing.B) {
 			store := sync.Map{}
 
-			b.Run(benchmark.MethodName("write"), func(b *testing.B) {
+			b.Run(utils.MethodName("write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -42,7 +42,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read"), func(b *testing.B) {
+			b.Run(utils.MethodName("read"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -55,7 +55,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read_while_write"), func(b *testing.B) {
+			b.Run(utils.MethodName("read_while_write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -76,7 +76,7 @@ var benchmarks = []benchmark.LibBenchmark{
 		Func: func(b *testing.B) {
 			store := conmap.New()
 
-			b.Run(benchmark.MethodName("write"), func(b *testing.B) {
+			b.Run(utils.MethodName("write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -86,7 +86,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read"), func(b *testing.B) {
+			b.Run(utils.MethodName("read"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -99,7 +99,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read_while_write"), func(b *testing.B) {
+			b.Run(utils.MethodName("read_while_write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -120,7 +120,7 @@ var benchmarks = []benchmark.LibBenchmark{
 		Func: func(b *testing.B) {
 			store := conmapv2.New[[]byte]()
 
-			b.Run(benchmark.MethodName("write"), func(b *testing.B) {
+			b.Run(utils.MethodName("write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -130,7 +130,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read"), func(b *testing.B) {
+			b.Run(utils.MethodName("read"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -140,7 +140,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read_while_write"), func(b *testing.B) {
+			b.Run(utils.MethodName("read_while_write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -158,7 +158,7 @@ var benchmarks = []benchmark.LibBenchmark{
 		Func: func(b *testing.B) {
 			store := cmap.Cmap{}
 
-			b.Run(benchmark.MethodName("write"), func(b *testing.B) {
+			b.Run(utils.MethodName("write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -168,7 +168,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read"), func(b *testing.B) {
+			b.Run(utils.MethodName("read"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -181,7 +181,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read_while_write"), func(b *testing.B) {
+			b.Run(utils.MethodName("read_while_write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -202,7 +202,7 @@ var benchmarks = []benchmark.LibBenchmark{
 		Func: func(b *testing.B) {
 			store := cmap.Map[int, []byte]{}
 
-			b.Run(benchmark.MethodName("write"), func(b *testing.B) {
+			b.Run(utils.MethodName("write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -212,7 +212,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read"), func(b *testing.B) {
+			b.Run(utils.MethodName("read"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {
@@ -222,7 +222,7 @@ var benchmarks = []benchmark.LibBenchmark{
 				})
 			})
 
-			b.Run(benchmark.MethodName("read_while_write"), func(b *testing.B) {
+			b.Run(utils.MethodName("read_while_write"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					var i int
 					for pb.Next() {

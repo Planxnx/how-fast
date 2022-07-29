@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Planxnx/how-fast/benchmark"
+	"github.com/Planxnx/how-fast/utils"
 	"github.com/valyala/fastrand"
 
 	crand "crypto/rand"
@@ -16,21 +16,21 @@ import (
 
 func BenchmarkRandom(b *testing.B) {
 	runtime.GOMAXPROCS(8)
-	benchmark.Start(b, benchmarks)
+	utils.Start(b, benchmarks)
 }
 
-var benchmarks = []benchmark.LibBenchmark{
+var benchmarks = []utils.LibBenchmark{
 	{
 		Name:    "math_rand",
 		Package: "math/rand",
 		Func: func(b *testing.B) {
 			rand.Seed(time.Now().UnixNano())
-			b.Run(benchmark.MethodName("sync"), func(b *testing.B) {
+			b.Run(utils.MethodName("sync"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					_ = rand.Uint32()
 				}
 			})
-			b.Run(benchmark.MethodName("async"), func(b *testing.B) {
+			b.Run(utils.MethodName("async"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					for pb.Next() {
 						_ = rand.Uint32()
@@ -44,7 +44,7 @@ var benchmarks = []benchmark.LibBenchmark{
 		Package: "crypto/rand",
 		Func: func(b *testing.B) {
 			maxUint32 := big.NewInt(math.MaxUint32)
-			b.Run(benchmark.MethodName("sync"), func(b *testing.B) {
+			b.Run(utils.MethodName("sync"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					_, err := crand.Int(crand.Reader, maxUint32)
 					if err != nil {
@@ -52,7 +52,7 @@ var benchmarks = []benchmark.LibBenchmark{
 					}
 				}
 			})
-			b.Run(benchmark.MethodName("async"), func(b *testing.B) {
+			b.Run(utils.MethodName("async"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					for pb.Next() {
 						_, err := crand.Int(crand.Reader, maxUint32)
@@ -68,12 +68,12 @@ var benchmarks = []benchmark.LibBenchmark{
 		Name:    "fastrand",
 		Package: "github.com/valyala/fastrand",
 		Func: func(b *testing.B) {
-			b.Run(benchmark.MethodName("sync"), func(b *testing.B) {
+			b.Run(utils.MethodName("sync"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					_ = fastrand.Uint32n(math.MaxUint32)
 				}
 			})
-			b.Run(benchmark.MethodName("async"), func(b *testing.B) {
+			b.Run(utils.MethodName("async"), func(b *testing.B) {
 				b.RunParallel(func(pb *testing.PB) {
 					for pb.Next() {
 						_ = fastrand.Uint32n(math.MaxUint32)

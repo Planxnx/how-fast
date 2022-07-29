@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"testing"
 
-	"github.com/Planxnx/how-fast/benchmark"
+	"github.com/Planxnx/how-fast/utils"
 	gojson "github.com/goccy/go-json"
 	segmentiojson "github.com/segmentio/encoding/json"
 	"github.com/wI2L/jettison"
@@ -50,15 +50,15 @@ func BenchmarkEncoder(b *testing.B) {
 		if bench.Marshal == nil {
 			continue
 		}
-		b.Run(benchmark.LibName(bench.Name), func(b *testing.B) {
-			b.Run(benchmark.FieldName("size", "small"), func(b *testing.B) {
+		b.Run(utils.LibName(bench.Name), func(b *testing.B) {
+			b.Run(utils.FieldName("size", "small"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					if _, err := bench.Marshal(smallPayload); err != nil {
 						b.Error(err)
 					}
 				}
 			})
-			b.Run(benchmark.FieldName("size", "large"), func(b *testing.B) {
+			b.Run(utils.FieldName("size", "large"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					if _, err := bench.Marshal(largePayload); err != nil {
 						b.Error(err)
@@ -74,8 +74,8 @@ func BenchmarkDecoder(b *testing.B) {
 		if bench.Unmarshal == nil {
 			continue
 		}
-		b.Run(benchmark.LibName(bench.Name), func(b *testing.B) {
-			b.Run(benchmark.FieldName("size", "small"), func(b *testing.B) {
+		b.Run(utils.LibName(bench.Name), func(b *testing.B) {
+			b.Run(utils.FieldName("size", "small"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					payload := SmallPayload{}
 					if err := bench.Unmarshal(DataSmallPayload, &payload); err != nil {
@@ -83,7 +83,7 @@ func BenchmarkDecoder(b *testing.B) {
 					}
 				}
 			})
-			b.Run(benchmark.FieldName("size", "large"), func(b *testing.B) {
+			b.Run(utils.FieldName("size", "large"), func(b *testing.B) {
 				for i := 0; i < b.N; i++ {
 					payload := LargePayload{}
 					if err := bench.Unmarshal(DataLargePayload, &payload); err != nil {
